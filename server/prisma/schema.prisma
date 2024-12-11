@@ -12,3 +12,23 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Deposit {
+  id            String   @id @default(cuid())
+  amount        Int
+  depositDate   DateTime?
+  depositBy     String?
+  createdAt     DateTime? @default(now())
+  updatedAt     DateTime? @updatedAt
+
+  @@map("deposits")
+}
+
+model Tracker {
+  id            String   @id @default(cuid())
+  amount        Int
+  createdAt     DateTime? @default(now())
+  updatedAt     DateTime? @updatedAt
+
+  @@map("trackers")
+}
