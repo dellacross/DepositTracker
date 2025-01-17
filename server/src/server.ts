@@ -1,4 +1,4 @@
-import express, { NextFunction, Request, Response } from 'express'
+import express, { Request, Response, NextFunction } from 'express'
 import { router } from './routes'
 import cors from 'cors'
 

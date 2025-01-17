@@ -26,4 +26,4 @@ class UpdateDepositController {
     }
 }
 
-export { UpdateDepositController}
+export { UpdateDepositController }

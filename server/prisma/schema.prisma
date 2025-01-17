@@ -26,7 +26,8 @@ model Deposit {
 
 model Tracker {
   id            String   @id @default(cuid())
-  amount        Int
+  amount        Int?
+  goal          Int?
   createdAt     DateTime? @default(now())
   updatedAt     DateTime? @updatedAt
 

@@ -1,9 +1,12 @@
 import React from 'react'
-import './Home.css'
+import './home.css'
 import { Goals } from '../../utils/Goals.tsx'
 import DepositCard from '../../components/DepositCard.tsx'
+import useGetDeposits from '../../hooks/useGetDeposits.tsx'
 
 const Home = () => {
+
+    const { deposits } = useGetDeposits()
  
     return (
         <div id="home">
@@ -21,7 +24,7 @@ const Home = () => {
                 </section>
             </article>
             <main>
-                { Goals.map((goal, index) => <DepositCard key={index} goal={goal} />) }
+                { deposits?.map((deposit, index) => <DepositCard key={index} deposit={deposit} />) }
             </main>
         </div>
     )

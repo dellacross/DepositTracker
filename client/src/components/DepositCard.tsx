@@ -1,12 +1,12 @@
 import React from 'react'
 import './DepositCard.css'
 
-const DepositCard = ({ goal }) => {
+const DepositCard = ({ deposit }) => {
   return (
     <div id="deposit-card">
-        <h1>{`R$ ${goal.amount},00`}</h1>
-        <p>Payment Date: {goal.paymentDate || '-'}</p>
-        <p>User Payer: {goal.userPayer || '-'}</p>
+        <h1>{`R$ ${deposit.amount},00`}</h1>
+        <p>Payment Date: {deposit.paymentDate || '-'}</p>
+        <p>User Payer: {deposit.userPayer || '-'}</p>
     </div>
   )
 }
