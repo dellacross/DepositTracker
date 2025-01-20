@@ -6,7 +6,6 @@ class UpdateDepositController {
         const { 
             amount, 
             id, 
-            depositBy, 
             depositDate 
         } = req.body;
 
@@ -15,7 +14,6 @@ class UpdateDepositController {
         const deposit = await updateDepositService.execute({ 
             amount, 
             id, 
-            depositBy, 
             depositDate 
         });
 

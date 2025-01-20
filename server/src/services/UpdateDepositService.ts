@@ -4,19 +4,30 @@ interface DepositRequest {
     amount: number;
     id: string;
     depositDate: Date;
-    depositBy: string;
 }
 
 class UpdateDepositService {
-    async execute({ amount, id, depositDate, depositBy }: DepositRequest) {
+    async execute({ amount, id, depositDate }: DepositRequest) {
+
+        const alreadyExists = await prismaClient.deposit.findFirst({
+            where: {
+                id: id
+            },
+            include: {
+                amount: amount
+            }
+        })
+
+        let realAmount = amount
+        if(alreadyExists?.amount !== 0) realAmount = 0
+
         const deposit = await prismaClient.deposit.update({
             where: {
                 id: id
             },
             data: {
-                amount: amount,
-                depositDate: depositDate,
-                depositBy: depositBy
+                amount: realAmount,
+                depositDate: depositDate
             }
         });
 
