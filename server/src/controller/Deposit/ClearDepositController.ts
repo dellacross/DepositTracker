@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { ClearDepositService } from "../services/ClearDepositService";
+import { ClearDepositService } from "../../services/Deposit/ClearDepositService";
 
 class ClearDepositController {
     async handle(req: Request, res: Response) {

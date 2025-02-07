@@ -1,5 +1,5 @@
 import { Response } from "express";
-import { ListDepositsService } from "../services/ListDepositsService";
+import { ListDepositsService } from "../../services/Deposit/ListDepositsService";
 
 class ListDepositsController {
     async handle(req: Request, res: Response) {

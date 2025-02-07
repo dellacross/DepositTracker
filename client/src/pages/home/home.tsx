@@ -3,10 +3,12 @@ import './home.css'
 import { Goals } from '../../utils/Goals.tsx'
 import DepositCard from '../../components/DepositCard.tsx'
 import useGetDeposits from '../../hooks/useGetDeposits.tsx'
+import useGetTrackers from '../../hooks/useGetTracker.tsx'
 
 const Home = () => {
 
     const { deposits } = useGetDeposits()
+    const { tracker } = useGetTrackers()
  
     return (
         <div id="home">
@@ -20,7 +22,7 @@ const Home = () => {
             <article>
                 <section>
                     <h1>Desafio dos 200 Depósitos</h1>
-                    <h2>Progesso: <span>{`R$ 0000,00`}</span></h2>
+                    <h2>Progesso: <span>{`R$ ${tracker?.amount},00`}</span></h2>
                 </section>
             </article>
             <main>

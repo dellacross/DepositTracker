@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { CreateDepositService } from '../services/CreateDepositService';
+import { CreateDepositService } from '../../services/Deposit/CreateDepositService';
 
 class CreateDepositController {
     async handle(req: Request, res: Response) {

@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { DeleteDepositService } from '../services/DeleteDepositService';
+import { DeleteDepositService } from '../../services/Deposit/DeleteDepositService';
 
 class DeleteDepositController {
   async handle(req: Request, res: Response) {

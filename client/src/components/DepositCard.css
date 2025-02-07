@@ -1,5 +1,4 @@
 #deposit-card {
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     display: flex;
     padding: 10px;
@@ -8,8 +7,17 @@
     justify-content: center;
     color: #fff;
     height: 200px;
+    cursor: pointer;
 }
 
 #deposit-card > p {
     margin: 0;
+}
+
+#deposit-card.exist-deposit {
+    box-shadow: 0 0 10px #4CAF50;
+}
+
+#deposit-card.non-deposit {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }

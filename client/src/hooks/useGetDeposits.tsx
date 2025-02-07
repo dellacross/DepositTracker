@@ -11,7 +11,7 @@ const useGetDeposits = () => {
             .get('http://localhost:3333/deposits')
             .then((res) => {
                 setDeposits(res.data.deposit)
-                console.log(res.data?.deposit)
+                //console.log(res.data?.deposit)
             })
             .catch((err) => console.log(err))
         }
