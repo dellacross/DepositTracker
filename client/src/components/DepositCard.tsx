@@ -4,6 +4,7 @@ import axios from 'axios'
 
 const DepositCard = ({ deposit }) => {
 
+<<<<<<< HEAD
   const [existDeposit, setExistDeposit] = useState(deposit?.paymentDate)
   const [date, setDate] = useState<Date | string>()
 
@@ -61,6 +62,24 @@ const DepositCard = ({ deposit }) => {
     >
       <h1>{`R$ ${deposit?.amount},00`}</h1>
       { date !== ''  && <p>Payment Date:</p> }
+=======
+  const handleDeposit = () => {
+    axios
+    .put('', {
+      id: deposit.id,
+      amout: deposit.amout,
+      paymentDate: deposit.paymentDate
+    })
+    .then((res) => {console.log(res)})
+    .catch((err) => {console.log(err)})
+  }
+
+  return (
+    <div id="deposit-card">
+      <h1>{`R$ ${deposit.amount},00`}</h1>
+      <p>Payment Date: {deposit.paymentDate || '-'}</p>
+      <p>User Payer: {deposit.userPayer || '-'}</p>
+>>>>>>> 6f8db96c7eb40219138a3ae4acec2a03d8e7d069
     </div>
   )
 }
