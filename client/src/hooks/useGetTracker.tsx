@@ -6,15 +6,18 @@ const useGetTrackers = () => {
     const [tracker, setTracker] = useState(null)
 
     useEffect(() => {
-        if(!tracker) {
-            axios
+        const getTrackers = async () => {
+            await axios
             .get('http://localhost:3333/trackers')
             .then((res) => {
-                setTracker(res.data.trackers)
-                console.log(res.data?.trackers)
+                const trackers = res.data?.tracker
+                setTracker(trackers[trackers?.length - 1])  
+                //console.log('res', res.data)
             })
             .catch((err) => console.log(err))
         }
+
+        if(!tracker) getTrackers()
     }, )
 
     return {

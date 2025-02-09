@@ -15,19 +15,7 @@ class ClearDepositService {
       }
     });
 
-    if(deposit) {
-      const tracker = await prismaClient.tracker.findFirst()
-      const newAmount = tracker?.amount - deposit.amount
-
-      await prismaClient.tracker.update({
-        where: {
-          id: tracker?.id
-        },
-        data: {
-          amount: newAmount
-        }
-      })
-    }
+    if(!deposit) throw new Error('Deposit not found')
 
     return deposit
   }

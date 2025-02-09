@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { ClearDepositService } from "../../services/Deposit/ClearDepositService";
+import { UpdateTrackerAmount } from "../../utils/UpdateTrackerAmount";
 
 class ClearDepositController {
     async handle(req: Request, res: Response) {
@@ -9,9 +10,12 @@ class ClearDepositController {
 
         const deposit = await clearDepositService.execute({ id })
 
+        const tracker = UpdateTrackerAmount({ amount: deposit.amount*-1 })
+
         return res.json({
-            deposit: deposit,
-            message: "Deposit cleared successfully"
+            message: "Deposit cleared successfully",
+            tracker: tracker,
+            deposit: deposit
         })
     }
 }

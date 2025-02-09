@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './home.css'
-import { Goals } from '../../utils/Goals.tsx'
 import DepositCard from '../../components/DepositCard.tsx'
 import useGetDeposits from '../../hooks/useGetDeposits.tsx'
 import useGetTrackers from '../../hooks/useGetTracker.tsx'
@@ -9,13 +8,23 @@ const Home = () => {
 
     const { deposits } = useGetDeposits()
     const { tracker } = useGetTrackers()
+
+    const [percentage, setPercentage] = useState<number>(0)
+
+    useEffect(() => {
+        if(tracker) {
+            const total = (200*(200+1))/2
+            const percentage = (tracker.amount / total) * 100
+            setPercentage(parseFloat(percentage?.toFixed(3)))
+        }
+    }, [tracker])
  
     return (
         <div id="home">
             <header>
                 <div id="background-circle">
                     <div id="center-circle">
-                        {`00.00%`}
+                        {`${percentage}%`}
                     </div>
                 </div>
             </header>
