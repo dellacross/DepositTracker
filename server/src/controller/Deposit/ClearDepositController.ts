@@ -10,7 +10,7 @@ class ClearDepositController {
 
         const deposit = await clearDepositService.execute({ id })
 
-        const tracker = UpdateTrackerAmount({ amount: deposit.amount*-1 })
+        const tracker = await UpdateTrackerAmount({ amount: deposit.amount*-1 })
 
         return res.json({
             message: "Deposit cleared successfully",

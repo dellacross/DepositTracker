@@ -10,7 +10,7 @@ class UpdateDepositController {
 
         const deposit = await updateDepositService.execute({ id });
 
-        const tracker = UpdateTrackerAmount({ amount: deposit.amount });
+        const tracker = await UpdateTrackerAmount({ amount: deposit.amount });
 
         return res.json({
             message: 'Deposit updated successfully',

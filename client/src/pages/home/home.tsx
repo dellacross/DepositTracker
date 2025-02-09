@@ -6,12 +6,14 @@ import useGetTrackers from '../../hooks/useGetTracker.tsx'
 
 const Home = () => {
 
+    const [newTracker, setNewTracker] = useState()
     const { deposits } = useGetDeposits()
-    const { tracker } = useGetTrackers()
+    const { tracker } = useGetTrackers({newTracker})
 
     const [percentage, setPercentage] = useState<number>(0)
 
     useEffect(() => {
+        console.log('tracker', tracker)
         if(tracker) {
             const total = (200*(200+1))/2
             const percentage = (tracker.amount / total) * 100
@@ -35,7 +37,9 @@ const Home = () => {
                 </section>
             </article>
             <main>
-                { deposits?.map((deposit, index) => <DepositCard key={index} deposit={deposit} />) }
+                { 
+                    deposits?.map((deposit, index) => <DepositCard key={index} deposit={deposit} setNewTracker={setNewTracker} />) 
+                }
             </main>
         </div>
     )

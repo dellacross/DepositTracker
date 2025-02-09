@@ -2,13 +2,16 @@ import React, { useEffect, useState } from 'react'
 import './DepositCard.css'
 import axios from 'axios'
 
-const DepositCard = ({ deposit }) => {
+const DepositCard = ({ deposit, setNewTracker }) => {
 
-  const [existDeposit, setExistDeposit] = useState(deposit?.depositDate)
+  const [existDeposit, setExistDeposit] = useState(false)
   const [date, setDate] = useState<string>()
 
   useEffect(() => {
-    if(deposit?.depositDate) formatDate(deposit?.depositDate)
+    if(deposit?.depositDate) {
+      formatDate(deposit?.depositDate)
+      setExistDeposit(true)
+    }
   }, [deposit])
 
   const formatDate = (dateString: string) => {
@@ -28,6 +31,7 @@ const DepositCard = ({ deposit }) => {
     .then((response) => {
       setExistDeposit(true)
       formatDate(response.data?.deposit?.depositDate)
+      setNewTracker(response.data?.tracker)
       console.log('new', response.data)
     })
     .catch((error) => {
@@ -43,6 +47,7 @@ const DepositCard = ({ deposit }) => {
     .then((response) => {
       setExistDeposit(false)
       setDate('')
+      setNewTracker(response.data?.tracker)
       console.log('clear', response.data)
     })
     .catch((error) => {
@@ -51,13 +56,13 @@ const DepositCard = ({ deposit }) => {
   }
 
   const handleDeposit = () => {
-    (deposit?.paymentDate || existDeposit) ? handleClearDeposit() : handleNewDeposit()
+    existDeposit ? handleClearDeposit() : handleNewDeposit()
   }
 
   return (
     <div 
       id="deposit-card"
-      className={(existDeposit && deposit?.depositDate) ? 'exist-deposit' : 'non-deposit'}
+      className={existDeposit ? 'exist-deposit' : 'non-deposit'}
       onClick={() => handleDeposit()}
     >
       <h1>{`R$ ${deposit?.amount},00`}</h1>

@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
 
-const useGetTrackers = () => {
+interface TrackerProps {
+    newTracker?: any;
+}
+
+const useGetTrackers = ({ newTracker }: TrackerProps = {}) => {
 
     const [tracker, setTracker] = useState(null)
 
@@ -18,10 +22,15 @@ const useGetTrackers = () => {
         }
 
         if(!tracker) getTrackers()
-    }, )
+    }, [tracker])
+
+    useEffect(() => {
+        if(newTracker) setTracker(newTracker) 
+    }, [newTracker])
 
     return {
-        tracker
+        tracker,
+        setTracker
     }
 }
 
