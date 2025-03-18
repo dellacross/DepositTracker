@@ -16,20 +16,20 @@ This project was developed using the following technologies:
 
 Frontend:
 
-  ReactJS
+- ReactJS
   
-  JavaScript
+- JavaScript
   
-  HTML
+- HTML
   
-  CSS
+- CSS
 
 Backend:
 
-  TypeScript
+- TypeScript
   
-  Express
+- Express
   
-  Prisma
+- Prisma
   
-  PostgreSQL
+- PostgreSQL
