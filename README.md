@@ -33,3 +33,5 @@ Backend:
 - Prisma
   
 - PostgreSQL
+
+### Developed by Victor Della Croce Maltez
